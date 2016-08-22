@@ -3,16 +3,11 @@ var request = require('request');
 var colors = require('colors');
 var encoders = require('./src/encoders');
 
-// var encodedContent = encoders.createEncodedList();
-
-
-
 function createList() {
     var encodedList = encoders.createEncodedList();
     console.log(encodedList);
     return encodedList;
 }
-
 
 function decodeList (encodedContent) {
     var list = encoders.decodeList(encodedContent);
@@ -42,11 +37,6 @@ function decodeList (encodedContent) {
     });
 }
 
-// var encodedContent = createList();
-
-
-
-
 if (argv.create) {
     createList();
 }
@@ -58,6 +48,3 @@ else if (argv._.length) {
 else {
     console.log(colors.red('YOU MUST EITHER --create or PASS A BASE64 STRING, OK?'));
 }
-// console.log(argv._);
-
-// decodeList(encodedContent);
