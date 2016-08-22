@@ -15,14 +15,14 @@ function decodeList (encodedContent) {
     var venueRequests = [];
     list.items.forEach(function(item) {
         var venueRequest = new Promise (function(resolve) {
-            request('https://api.theinfatuation.com/services/v3/venues/'+item.infatuation, function(error, http, response) {
+            request(`https://api.theinfatuation.com/services/v3/venues/${item.infatuation}`, function(error, http, response) {
                 resolve(JSON.parse(response));
             });
         });
         venueRequests.push(venueRequest);
     });
 
-    console.log(colors.blue(colors.bold('=== '+list.label+' ===')));
+    console.log(colors.blue(colors.bold(`=== ${list.label} ===`)));
     console.log(list.blurb.msg);
     process.stdout.write(colors.italic('Getting venues....'));
 
