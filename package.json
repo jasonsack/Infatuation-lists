@@ -19,13 +19,10 @@
   "homepage": "https://github.com/jasonsack/infatuation-lists#readme",
   "dependencies": {
     "colors": "^1.1.2",
-    "express": "^4.14.0",
     "js-base64": "^2.1.9",
     "lzma": "^2.3.2",
+    "protobufjs": "^5.0.1",
     "request": "^2.74.0",
     "yargs": "^5.0.0"
-  },
-  "devDependencies": {
-    "protobufjs": "^5.0.1"
   }
 }
