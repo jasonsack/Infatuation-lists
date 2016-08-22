@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package infatuation.list;
+option objc_class_prefix = "Infatuation";
+
+import "./timestamp.proto";
+
+message List {
+    string id = 1;
+    string label = 2;
+    Annotation blurb = 3;
+    Metadata metadata = 4;     // skip
+    repeated Item items = 5;
+    string image_url = 6;
+}
+
+message Item {
+    oneof id {
+        int32 infatuation = 1; // venue ID
+        string foursquare = 2; // skip
+    }
+    repeated Annotation annotations = 3; // skip
+}
+
+message Metadata { // skip
+    User creator = 1;
+    repeated User audience = 2;
+    google.protobuf.Timestamp created = 3;
+    google.protobuf.Timestamp updated = 4;
+}
+
+message User { // populated from imessage
+    string id = 1; 
+    string name = 2;
+}
+
+message Annotation {
+    User user = 1;
+    string msg = 2;
+    google.protobuf.Timestamp timestamp = 3;
+}

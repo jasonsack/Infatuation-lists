@@ -1,0 +1,32 @@
+{
+  "name": "infatuation-lists",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jasonsack/infatuation-lists.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jasonsack/infatuation-lists/issues"
+  },
+  "homepage": "https://github.com/jasonsack/infatuation-lists#readme",
+  "dependencies": {
+    "colors": "^1.1.2",
+    "express": "^4.14.0",
+    "js-base64": "^2.1.9",
+    "lzma": "^2.3.2",
+    "request": "^2.74.0",
+    "sync-request": "^3.0.1",
+    "yargs": "^5.0.0"
+  },
+  "devDependencies": {
+    "protobufjs": "^5.0.1"
+  }
+}
