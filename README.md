@@ -4,16 +4,22 @@
 
 Make sure you have node & npm installed and then:
 
-`npm install`
+```
+npm install
+```
 
 ### Create Encoded List
 
-Create a base64 encoeded, lzma compressed protobuffer list
+Create a base64 encoeded, lzma compressed protobuffer list. itemsCont defaults to 10 if not passed
 
-`node index.js --create`
+```shell
+node index.js --create <Integer: itemsCount>
+```
 
 ### Decode list
 
 decode & decompress a protobuffer list
 
-`node index.js <encoded_list>`
+```
+node index.js <encoded_list>
+```

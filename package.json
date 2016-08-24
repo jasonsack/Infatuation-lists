@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "decode": "node index.js",
+    "create": "node index.js --create",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,6 +21,7 @@
   "dependencies": {
     "colors": "^1.1.2",
     "js-base64": "^2.1.9",
+    "lodash": "^4.15.0",
     "lzma": "^2.3.2",
     "protobufjs": "^5.0.1",
     "request": "^2.74.0",
