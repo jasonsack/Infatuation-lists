@@ -30,7 +30,7 @@ function decodeList (encodedContent) {
         process.stdout.write('\n');
         
         venues.forEach((venue, idx) => {
-            const price = range(3).map(() => '$');
+            const price = range(venue.price).map(() => '$');
 
             console.log(colors.bold(`${idx+1}. ${venue.name} ${colors.bgCyan(colors.black(price.join('')))}`));
             console.log(`${venue.street} ${venue.city}, ${venue.state}`);
