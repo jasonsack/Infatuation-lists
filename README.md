@@ -10,9 +10,9 @@ npm install
 
 ### Create Encoded List
 
-Create a base64 encoeded, lzma compressed protobuffer list. _itemsCount defaults to 10 if not passed._
+Create a base64 encoded, lzma compressed protobuffer list. _itemsCount defaults to 10 if not passed._
 
-```shell
+```
 node index.js --create <Integer: itemsCount>
 ```
 
