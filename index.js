@@ -1,25 +1,17 @@
 const argv = require('yargs').argv;
-const request = require('request');
-const colors = require('colors');
-const encoders = require('./src/encoders');
 const range = require('lodash/range');
+const colors = require('colors');
+const api = require('./src/api');
 
-function createList (itemsCount) {
-    var encodedList = encoders.createEncodedList(itemsCount);
-    console.log(encodedList);
-    return encodedList;
+if (argv.create) {
+    const itemsCount = (typeof argv.create) !== 'boolean' ? parseInt(argv.create) : undefined;
+    const encoded = api.createList(itemsCount);
+    console.log(encoded);
 }
-
-function decodeList (encodedContent) {
-    const list = encoders.decodeList(encodedContent);
-
-    const venueRequests = list.items.map(item => {
-        return new Promise (resolve => {
-            request(`https://api.theinfatuation.com/services/v3/venues/${item.infatuation}`, (error, http, response) => {
-                resolve(JSON.parse(response));
-            });
-        });
-    });
+else if (argv._.length) {
+    const decoded = api.decodeList(argv._[0]);
+    const list = decoded.list;
+    const venueRequests = decoded.venues;
 
     console.log(colors.bgCyan(colors.bold(`=== ${list.label} ===`)));
     console.log(list.blurb.msg);
@@ -37,15 +29,6 @@ function decodeList (encodedContent) {
             console.log('');
         });
     });
-}
-
-if (argv.create) {
-    const itemsCount = (typeof argv.create) !== 'boolean' ? parseInt(argv.create) : undefined;
-    createList(itemsCount);
-}
-else if (argv._.length) {
-    const encoded = argv._[0];
-    decodeList(encoded);
 }
 else {
     console.log(colors.red('YOU MUST EITHER --create or PASS A BASE64 STRING, OK?'));

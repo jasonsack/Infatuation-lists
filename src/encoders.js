@@ -12,13 +12,13 @@ const Item = InfatuationList.Item;
 const Annotation = InfatuationList.Annotation;
 const User = InfatuationList.User;
 
-function createListData (itemsCount) {
-    function randomId () {
-        const min = 1;
-        const max = 1000;
-        return Math.floor(Math.random() * max) + min;
-    }
+function randomId () {
+    const min = 1;
+    const max = 1000;
+    return Math.floor(Math.random() * max) + min;
+}
 
+function createListData (itemsCount) {
     return {
         id: '1',
         label: 'Test List',
@@ -39,8 +39,8 @@ module.exports.createEncodedList = function createEncodedList (itemsCount) {
 
     const listData = createListData(itemsCount);
     const list = new List(listData);
-    const buffer = list.encode();
-    const compressed = lzma.compress(buffer.buffer);
+    const buffer = list.encode().buffer;
+    const compressed = lzma.compress(buffer);
     const encoded = base64.encode(compressed).replace('+','-').replace('/','_').replace(/=+$/, '');
 
     return encoded;
@@ -54,6 +54,7 @@ module.exports.decodeList = function decodeList (encodedContent) {
         case 3: encodedContent += '='; break;
     }
 
+    console.log(base64.decode(encodedContent));
     const decoded = base64.decode(encodedContent).split(',').map(value => parseInt(value));
     const decompressed = lzma.decompress(decoded);
     const list = List.decode(decompressed);
