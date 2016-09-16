@@ -1,3 +1,5 @@
+'use-strict';
+
 const ProtoBuf = require('protobufjs');
 const lzma = require('lzma');
 const base64 = require('js-base64').Base64;
@@ -53,8 +55,7 @@ module.exports.decodeList = function decodeList (encodedContent) {
         case 2: encodedContent += '=='; break;
         case 3: encodedContent += '='; break;
     }
-
-    console.log(base64.decode(encodedContent));
+    
     const decoded = base64.decode(encodedContent).split(',').map(value => parseInt(value));
     const decompressed = lzma.decompress(decoded);
     const list = List.decode(decompressed);

@@ -1,3 +1,5 @@
+'use-strict';
+
 const argv = require('yargs').argv;
 const range = require('lodash/range');
 const colors = require('colors');
@@ -9,6 +11,8 @@ if (argv.create) {
     console.log(encoded);
 }
 else if (argv._.length) {
+    console.log('');
+    
     const decoded = api.decodeList(argv._[0]);
     const list = decoded.list;
     const venueRequests = decoded.venues;
